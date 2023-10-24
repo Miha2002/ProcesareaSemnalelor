@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import scipy
 import sounddevice as sd
 
+## Exercitiul 1
 
 def semnal_sin(t):
     return np.sin(200 * np.pi * t + 3 * np.pi / 4)
@@ -22,6 +23,8 @@ def ex1():
     axs[1].plot(k, semnal_cos(k))
     plt.show()
 
+
+## Exercitiul 2
 
 def ex2_f1(t, faza):
     return 2 * np.sin(200 * np.pi * t + faza)
@@ -59,6 +62,8 @@ def ex2():
     plt.show()
 
 
+## Exercitiul 3
+
 def ex3():
     fs = 44100
     rate, ex2_a = scipy.io.wavfile.read("ex2_a.wav")
@@ -74,6 +79,9 @@ def ex3():
     # time.sleep(2)
     # sd.play(ex2_d, fs)
     # time.sleep(2)
+
+
+## Exercitiul 4
 
 def semnal_s(t):
     return 3 * np.sin(800 * np.pi * t + np.pi / 4)
@@ -91,6 +99,9 @@ def ex4():
     # plt.plot(k, arr_st, color="blue")
     plt.plot(k, arr_res, color="red")
     plt.show()
+
+
+## Exercitiul 5
 
 def semnal_ex5(t,frecventa):
     return np.sin(2 * frecventa * np.pi * t)
@@ -111,6 +122,8 @@ def ex5():
     # se aude clar unde se face schimbarea dintre cele 2 frecvente
 
 
+## Exercitiul 6
+
 def semnal_ex6(t,frecventa):
     return np.sin(2 * frecventa * np.pi * t)
 
@@ -128,6 +141,8 @@ def ex6():
     # cu cat frecventa este mai mica, cu atat este mai plat graficul functiei sinusoidale
     # pentru frecventa = 0Hz, este constant 0
 
+
+## Exercitiul 7
 
 def semnal_ex7(t):
     return np.sin(2 * 1000 * np.pi * t)
