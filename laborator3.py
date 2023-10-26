@@ -13,10 +13,6 @@ def ex1():
     N_arr = np.linspace(0,7,8)
     x = semnal_sin(N_arr)
 
-    n = np.linspace(0, 7, 200)
-    # plt.plot(semnal_sin(n))
-    # plt.show()
-
     arr_cos = np.zeros((N,N), dtype=complex)
     arr_sin = np.zeros((N,N), dtype=complex)
 
