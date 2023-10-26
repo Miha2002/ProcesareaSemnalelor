@@ -164,6 +164,20 @@ def ex7():
     # diferenta dintre cele 2 optiuni este o shiftare la dreapta a punctelor
     # este vizibil, dar nicio varianta nu este mai buna ca cealalta
 
+
+def ex8():
+    k = np.linspace(-np.pi/2, np.pi/2, 1000)
+    k_modif = np.sin(k)
+    aprox = (k - (7 * k * 3) / 60) / (1 + (k * 2) / 20)
+
+    fig, axs = plt.subplots(3)
+    fig.suptitle("Exercitiul 8")
+    axs[0].plot(k, k)
+    axs[1].plot(k, aprox)
+    axs[2].plot(k, k_modif)
+    plt.show()
+
+
 if __name__ == "__main__":
     ex1()
     ex2()
@@ -172,3 +186,4 @@ if __name__ == "__main__":
     ex5()
     ex6()
     ex7()
+    ex8()
