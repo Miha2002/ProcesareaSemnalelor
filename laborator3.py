@@ -65,8 +65,14 @@ def ex2():
     axs[1, 1].plot(z.real, z.imag)
     plt.show()
 
+
+def semnal_3(n):
+    # f1=10 f2=25 f3=45
+    return np.cos(2 * np.pi * 10 * n) + 2 * np.cos(2 * np.pi * 25 * n) + 0.5 * np.cos(2 * np.pi * 45 * n)
+
+
 def ex3():
-    n = np.linspace(0,1,120)
+    n = np.linspace(0,1,240)
     # plt.plot(n, semnal_3(n))
     # plt.show()
 
@@ -75,7 +81,7 @@ def ex3():
     plt.show()
 
     # w=90
-    z = semnal_3(n) * np.exp(-2j * np.pi * n * 90)
+    z = semnal_3(n) * np.exp(-2j * np.pi * n * 80)
     plt.plot(n, z)
     plt.show()
 
