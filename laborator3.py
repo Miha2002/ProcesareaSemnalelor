@@ -66,7 +66,18 @@ def ex2():
     plt.show()
 
 def ex3():
-    return 0
+    n = np.linspace(0,1,120)
+    # plt.plot(n, semnal_3(n))
+    # plt.show()
+
+    z = semnal_3(n) * np.exp(-2j * np.pi * n * 1)
+    plt.plot(n,z)
+    plt.show()
+
+    # w=90
+    z = semnal_3(n) * np.exp(-2j * np.pi * n * 90)
+    plt.plot(n, z)
+    plt.show()
 
 
 if __name__ == "__main__":
