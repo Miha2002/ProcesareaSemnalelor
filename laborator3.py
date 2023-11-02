@@ -85,6 +85,10 @@ def ex3():
     plt.plot(n, z)
     plt.show()
 
+    res = np.abs(z)
+    plt.plot(n, res)
+    plt.show()
+
 
 if __name__ == "__main__":
     ex1()
