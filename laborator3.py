@@ -28,9 +28,9 @@ def ex1():
     f_conj_transpose = np.conj(F).T
     product = np.dot(f_conj_transpose, F)
 
-    is_unitary = np.allclose(product, N * np.eye(N))
+    unitar = np.allclose(product, N * np.eye(N))
 
-    print("\nEste matricea Fourier unitara?", is_unitary)
+    print("\nEste matricea Fourier unitara?", unitar)
 
 
 def semnal_sin(t):
