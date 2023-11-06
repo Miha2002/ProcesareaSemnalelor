@@ -58,33 +58,67 @@ def ex1():
 
 
 def semnal1_ex2(n):
-    return 3 * np.cos(2 * 1000 * np.pi * n)
+    return 2 * np.cos(2 * 1 * np.pi * n)
 
 def semnal2_ex2(n):
-    return 0
+    return 3 * np.cos(2 * 5 * np.pi * n)
 
 def semnal3_ex2(n):
-    return 0
+    return 3 * np.cos(2 * 7 * np.pi * n)
 
 def ex2():
     n = np.linspace(0, 1, 100)
-    n_small = np.linspace(0, 1, 10)
+    n_small = np.linspace(0, 1, 7)
 
     fig, axs = plt.subplots(3)
     fig.tight_layout(pad=2.0)
 
     axs[0].plot(n, semnal1_ex2(n))
-    axs[0].scatter(n_small, semnal1_ex2(n_small))
+    axs[0].stem(n_small, semnal1_ex2(n_small), basefmt="None", linefmt="None", markerfmt="red")
 
     axs[1].plot(n, semnal2_ex2(n))
-    axs[1].scatter(n_small, semnal2_ex2(n_small))
+    axs[1].stem(n_small, semnal2_ex2(n_small), basefmt="None", linefmt="None", markerfmt="red")
 
     axs[2].plot(n, semnal3_ex2(n))
-    axs[2].scatter(n_small, semnal3_ex2(n_small))
+    axs[2].stem(n_small, semnal3_ex2(n_small), basefmt="None", linefmt="None", markerfmt="red")
+    plt.show()
+
+def ex3():
+    n = np.linspace(0, 1, 200)
+    n_small = np.linspace(0, 1, 15) # am schimbat frecventa din 7 -> 15
+
+    fig, axs = plt.subplots(3)
+    fig.tight_layout(pad=2.0)
+
+    axs[0].plot(n, semnal1_ex2(n))
+    axs[0].stem(n_small, semnal1_ex2(n_small), basefmt="None", linefmt="None", markerfmt="red")
+
+    axs[1].plot(n, semnal2_ex2(n))
+    axs[1].stem(n_small, semnal2_ex2(n_small), basefmt="None", linefmt="None", markerfmt="red")
+
+    axs[2].plot(n, semnal3_ex2(n))
+    axs[2].stem(n_small, semnal3_ex2(n_small), basefmt="None", linefmt="None", markerfmt="red")
     plt.show()
 
 
+def ex5():
+    return 0
+
+
+def ex6():
+    return 0
+
 
 if __name__ == "__main__":
-    ex1()
+    # ex1()
     # ex2()
+    # ex3()
+    ex5()
+    ex6()
+
+    # Exercitiul 4.
+    # 40Hz-200Hz => max * 2 = 200 * 2 = 400Hz este minimul necesar (teorema esantionarii Nyquist-Shannon)
+
+    #Exercitiul 7.
+    # 80 = 10 * log10(90 / P_zgomot)
+    # => P_zgomot = 90 / 10^8
