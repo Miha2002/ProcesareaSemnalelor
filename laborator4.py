@@ -28,6 +28,7 @@ def ex1():
         plt.show()
         end2 = time.time() * 1000
         print("\nN=", N ,"\nOur version: ", round(end1-start), "ms\nNumpy version:", round(end2-end1),"ms")
+        
     # N = 128
     # Our version: 2016ms
     # Numpy version: 393ms
