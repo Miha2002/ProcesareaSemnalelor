@@ -7,55 +7,63 @@ def semnal_ex1(n):
 
 def ex1():
     valN = (128, 256, 512, 1024, 2048, 4096, 8192)
+    t_f1=[]
+    t_f2=[]
 
     for N in valN:
         n = np.linspace(0, N - 1, N)
+        k = n.reshape((N,1))
         semnal = semnal_ex1(n)
 
         start = time.time() * 1000
         F = np.zeros((N, N), dtype=np.complex64)
-        for i in range(N):
-            for j in range(N):
-                F[i, j] = np.exp(-2j * np.pi * i * j / N)
-
-        F1 = np.dot(F, semnal)
-        plt.plot(n, F1.real)
-        plt.show()
+        interm = np.exp(-2j * np.pi * k * n / N)
+        F = np.sqrt(1/N) * np.dot(interm, semnal)
         end1 = time.time() * 1000
 
-        F2 = np.fft.fft(semnal_ex1(n),N)
-        plt.plot(n, F2.real)
-        plt.show()
+        F2 = np.fft.fft(semnal_ex1(n), N)
+        # print(F2)
         end2 = time.time() * 1000
-        print("\nN=", N ,"\nOur version: ", round(end1-start), "ms\nNumpy version:", round(end2-end1),"ms")
-        
+
+
+        t_f1.append(end1-start)
+        t_f2.append(end2-end2)
+        print("\nN=", N ,"\nOur version: ", end1-start, "ms\nNumpy version:", end2-end1,"ms")
+
+    plt.figure(figsize=(10, 6))
+    plt.plot(valN, t_f1, "o-", color="red")
+    plt.plot(valN, t_f2, "o-")
+    plt.xscale("log")
+    plt.yscale("log")
+    plt.show()
+
     # N = 128
-    # Our version: 2016ms
-    # Numpy version: 393ms
+    # Our version: 4ms
+    # Numpy version: 1ms
     #
     # N = 256
-    # Our version: 698ms
-    # Numpy version: 335ms
+    # Our version: 13ms
+    # Numpy version: 1ms
     #
     # N = 512
-    # Our version: 1918ms
-    # Numpy version: 335ms
+    # Our version: 51ms
+    # Numpy version: 1ms
     #
     # N = 1024
-    # Our version: 5372ms
-    # Numpy version: 296ms
+    # Our version: 198ms
+    # Numpy version: 2ms
     #
     # N = 2048
-    # Our version: 16299ms
-    # Numpy version: 209ms
+    # Our version: 809ms
+    # Numpy version: 2ms
     #
     # N = 4096
-    # Our version: 98032ms
-    # Numpy version: 373ms
+    # Our version: 3271ms
+    # Numpy version: 3ms
     #
     # N = 8192
-    # Our version: 351055ms
-    # Numpy version: 348ms
+    # Our version: 12980ms
+    # Numpy version: 3ms
 
 
 def semnal1_ex2(n):
