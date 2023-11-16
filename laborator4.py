@@ -110,19 +110,53 @@ def ex3():
     plt.show()
 
 
-def ex5():
-    return 0
-
-
 def ex6():
-    return 0
+    rate, data = wavfile.read("vocale.wav")
+    N = data.shape[0]
+    k = N/100
+    n = np.arange(0, N, k)
+    n = [int(x) for x in n]
+
+    for i in range(len(n)-1):
+        x = data[n[i]: n[i+1]]
+        col = np.fft.fft(x)
+        matrix = np.hstack(col)
+
+        if i+1 != len(n):
+            x = data[n[i]+int(k/2): n[i + 1]+int(k//2)]
+            col = np.fft.fft(x)
+            matrix = np.hstack(col)
+
+    # print(matrix)
+
+    fs = rate
+    nperseg = int(matrix.shape[0] / 100)
+    noverlap = int(nperseg / 2)
+
+    frequencies, times, spectrogram = signal.spectrogram(
+        matrix.real, fs=fs, nperseg=nperseg, noverlap=noverlap
+    )
+    print(times)
+
+    # Plot the spectrogram
+    plt.figure(figsize=(10, 6))
+    plt.pcolormesh(times, frequencies, np.abs(np.log10(spectrogram)), shading='auto')
+    plt.colorbar(label='Power/Frequency (dB/Hz)')
+    plt.ylabel('Frequency (Hz)')
+    plt.xlabel('Time (s)')
+    plt.title('Spectrogram')
+    plt.show()
 
 
 if __name__ == "__main__":
     # ex1()
     # ex2()
     # ex3()
-    ex5()
+
+    # Exercitiul 5.
+    # Intre cateva dintre vocale se vad diferente, precum "a" si "e"
+    # restul sunetelor sunt destul de similare
+
     ex6()
 
     # Exercitiul 4.
