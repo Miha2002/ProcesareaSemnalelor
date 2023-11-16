@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from datetime import datetime
 import csv
-import pandas as pd
+# import pandas as pd
 
 def pctD():
     data = np.genfromtxt("Train.csv", delimiter=',', names=True, dtype=None, encoding=None)
@@ -61,6 +61,8 @@ if __name__ == "__main__":
     # Punctul A.
     # 18288 esantioane, 1 esantion / ora
     # intr-o secunda => 1/(60*60) = 0.000277 Hz
+    # data = np.genfromtxt("Train.csv", delimiter=',', names=True, dtype=None, encoding=None)
+    # time = pd.to_datetime(data["Datetime"], format='%d-%m-%Y %H:%M', errors='coerce')
 
     # Punctul B.
     # Considerand ca se precizeaza ca fiecare esantion reprezinta datele obtinute o data pe ora
