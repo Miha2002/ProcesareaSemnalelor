@@ -38,6 +38,24 @@ def pctE():
         print("Semnalul nu are componenta continuă.")
 
 
+def pctF():
+    data = np.genfromtxt("Train.csv", delimiter=',', names=True, dtype=None, encoding=None)
+    semnal = data['Count']
+    N = len(semnal)
+    f = 1 / 3600
+
+    res_fft = np.fft.fft(semnal)
+    n = np.fft.fftfreq(N, d=1 / f)
+
+    max_val = np.argsort(np.abs(res_fft))[-4:]
+    max_frecv = n[max_val]
+
+    for i, val in enumerate(max_val):
+        frequency = max_frecv[i]
+        amplitude = np.abs(res_fft[val])
+        print("Frecventa: ", frequency, " Hz,  Amplitudine:", amplitude)
+
+
 if __name__ == "__main__":
 
     # Punctul A.
@@ -53,5 +71,6 @@ if __name__ == "__main__":
     # Conform Nyquist frecventa maxima este 1/2 din frecventa de esantionare
     # => 0.000277 Hz / 2 = 0.000138 Hz
 
-    # pctD()
+    pctD()
     pctE()
+    pctF()
