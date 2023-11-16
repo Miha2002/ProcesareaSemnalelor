@@ -31,10 +31,6 @@ def pctE():
     print(int(res))
     if res != 0:
         print("Semnalul are o componenta continua cu valoarea:", res)
-        time_diff = np.diff(time).mean()
-        time_diff_seconds = time_diff.astype('timedelta64[s]').view('int64') / 1e9
-        frequencies = np.fft.fftfreq(N, d=time_diff_seconds)
-        frequencies = frequencies[:N // 2]
 
         semnal_nou = int((semnal - res).mean()) # foarte aproape de 0, erori ici colo idk
         print("Semnalul nou are componenta continua:", semnal_nou, " ,adica nu are :)))")
