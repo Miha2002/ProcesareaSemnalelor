@@ -116,6 +116,10 @@ def ex1():
     plt.show()
 
 
+def ex2():
+    return 0
+
 
 if __name__ == "__main__":
     ex1()
+    # ex2()
