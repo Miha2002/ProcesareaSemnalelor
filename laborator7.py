@@ -118,6 +118,32 @@ def ex1():
 
 def ex2_3():
     # Exercitiul 2.
+    image = misc.face(gray=True)
+    Y = np.fft.fft2(image)
+    freq_db = 20 * np.log10(np.abs(Y))
+    freq_cutoff = 140
+
+    Y_cutoff = Y.copy()
+    Y_cutoff[freq_db > freq_cutoff] = 0
+
+    X_cutoff = np.fft.ifft2(Y_cutoff)
+    X_cutoff = np.real(X_cutoff)
+    compressed_img = X_cutoff
+
+    # Afișează imaginile
+    plt.figure(figsize=(10, 5))
+
+    plt.subplot(1, 2, 1)
+    plt.title("Imaginea originală")
+    plt.imshow(image, cmap='gray')
+
+    plt.subplot(1, 2, 2)
+    plt.title("Imaginea comprimată")
+    plt.imshow(compressed_img, cmap='gray')
+
+    plt.show()
+    
+    # Exercitiul 2.
     img = misc.face(gray=True)
 
     f_transform = np.fft.fft2(img)
