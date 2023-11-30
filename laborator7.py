@@ -116,10 +116,45 @@ def ex1():
     plt.show()
 
 
-def ex2():
-    return 0
+def ex2_3():
+    # Exercitiul 2.
+    img = misc.face(gray=True)
+
+    f_transform = np.fft.fft2(img)
+    power_spectrum = np.abs(f_transform) ** 2
+    zgomot = np.mean(power_spectrum)
+    snr_threshold = 10
+    cutoff = snr_threshold * zgomot
+    f_transform_filtered = f_transform * (power_spectrum > cutoff)
+    compressed_img = np.real(np.fft.ifft2(f_transform_filtered))
+
+    # Exercitiul 3.
+    snr_original = 10 * np.log10(np.mean(img ** 2) / np.mean((img - compressed_img) ** 2))
+    restored_img = img - img + compressed_img
+    snr_restored = 10 * np.log10(np.mean(img ** 2) / np.mean((img - restored_img) ** 2))
+
+    # Afișează imaginile
+    plt.figure(figsize=(15, 5))
+
+    plt.subplot(1, 3, 1)
+    plt.title("Imaginea originală")
+    plt.imshow(img, cmap='gray')
+
+    plt.subplot(1, 3, 2)
+    plt.title("Imaginea comprimată")
+    plt.imshow(compressed_img, cmap='gray')
+
+    plt.subplot(1, 3, 3)
+    plt.title("Imaginea restaurată")
+    plt.imshow(restored_img, cmap='gray')
+
+    plt.show()
+
+    # Afișează raportul SNR înainte și după
+    print(f"Raportul SNR înainte de comprimare: {snr_original:.2f} dB")
+    print(f"Raportul SNR după eliminarea zgomotului: {snr_restored:.2f} dB")
 
 
 if __name__ == "__main__":
     ex1()
-    # ex2()
+    # ex2_3()
