@@ -10,8 +10,9 @@ def ex1():
     variatii = np.random.normal(0, 2, N)
 
     serie_timp = trend + sezon + variatii
-    # plt.plot(serie_timp)
-    # plt.show()
+    plt.title("Serie timp")
+    plt.plot(serie_timp)
+    plt.show()
 
     # order = (1, 0.5)
     # results = ArmaProcess(serie_timp, order)
@@ -22,14 +23,15 @@ def ex1():
     # ax.plot(results.generate_sample(nsample=N*10))
     # plt.show()
 
-    alpha = 0.5
+    alpha = 0.9
     result = np.zeros(N)
 
     for j in t:
         for i in range(j):
-            result[j] = result[j] + (1-alpha)**(j-i) * serie_timp[i] + (1-alpha)**j * serie_timp[0]
+            result[j] = result[j] + (1-alpha)**(j-i) * serie_timp[i]
         result[j] = result[j] * alpha
 
+    plt.title("Rezultat mediere exp")
     plt.plot(result)
     plt.show()
 
